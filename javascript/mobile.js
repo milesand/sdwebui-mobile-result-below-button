@@ -9,14 +9,16 @@ function onLoad() {
     })
 
     const to_mobile = (mode) => {
+        values[mode].genResult.style.paddingTop = '10px';  // For progress bar
         values[mode].topRow.append(values[mode].genResult);
     };
 
     const undo_mobile = (mode) => {
+        values[mode].genResult.style.paddingTop = '0px';
         values[mode].genResultParent.append(values[mode].genResult);
     };
 
-    const media_query = matchMedia("(max-width:43.95em)");
+    const media_query = matchMedia("(max-width:43.95em)");  // Breaking point of UI's internal resize-handle component
     if (media_query.matches) {
         ['txt', 'img'].forEach(to_mobile);
     }
